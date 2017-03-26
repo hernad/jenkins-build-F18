@@ -1,0 +1,7 @@
+build F18 win32 on jenkins
+
+STEPS
+
+1. run vagrant.cmd
+2. run in cygwin: build_harbour_msys2.sh
+3. run msys2: msys2_build_step_3.sh
