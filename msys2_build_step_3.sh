@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo $PATH
 
+BRANCH=23100-ld
 
 export PATH=/c/msys32/mingw32/bin:C:\hbwin\bin:/mingw32/bin:/usr/local/bin:/usr/bin:/bin
 export PATH=$PATH:/c/ProgramData/Oracle/Java/javapath
@@ -15,13 +15,22 @@ echo msys2 build step 3
 
 
 cd /c
-rm -rf hbwin
+if [ ! -d hbwin ] ; then
+   curl -LO https://download.bring.out.ba/hbwin.tar.gz
+   tar xvf hbwin.tar.gz
+fi
+
+if [ ! -d hbwin ] ; then
+   echo "c:/hbwin not found?!"
+   exit -1
+fi
 
 echo == g drive for data ===
 cd /g
-git clone https://github.com/hernad/harbour-core.git
-cd harbour-core
-git checkout my-master -f
+git clone https://github.com/knowhow/F18_knowhow.git
+cd F18_knowhow
+
+git checkout $BRANCH -f
 git pull
 
 
@@ -32,26 +41,13 @@ C_ROOT=C:
 
 
 HB_ROOT=$C_ROOT\\hbwin
+export PATH=$HB_ROOT\\bin:$PATH
 
-export HB_INSTALL_PREFIX=$HB_ROOT
-export HB_INC_INSTALL=$HB_ROOT\\include
-export HB_LIB_INSTALL=$HB_ROOT\\lib
 
-#export HB_WITH_MYSQL=c:\\mysql\\include
-#export HB_WITH_QT=c:\\Qt\\$QT_VER\\mingw$MINGW_VER\\include
-#export PATH=$MSYS2\\bin:$PATH
-#export MSYS2=c:\\msys32\\mingw32
-#export HB_WITH_PGSQL=$MSYS2\\include
-#export HB_WITH_OPENSSL=$MSYS2\\include
+source scripts/mingw_msys2_set_envars.sh
 
-#export PATH=/c/msys32/mingw32/bin:$HB_ROOT\\bin:$PATH
-#HB_DBG=`cygpath -d $PWD`
+scripts/build_gz_push.sh Windows
 
-export HB_WITH_QT=no
-./win-make.exe
 
-./win-make.exe install
-cd /c/
-tar cvfz hbwin.tar.gz hbwin
-cp hbwin.tar.gz //vboxsrv/vagrant/
+cp F18_Windows*.gz //vboxsrv/vagrant/
 
