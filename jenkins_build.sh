@@ -14,7 +14,7 @@ vagrant --version
 vagrant up --provision
 vagrant halt
 
-if [ ! -f $FILE ] ; then
+if ! ls $FILE>/dev/null ; then
    echo "$FILE not created ?!"
    exit 1
 fi

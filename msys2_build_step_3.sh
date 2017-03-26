@@ -10,14 +10,16 @@ export PATH=$PATH:/c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WIN
 
 
 cd /c
+echo ======= harbour dependency ===================
 [ -d hbwin ] && rm -rf hbwin 
 curl -LO https://download.bring.out.ba/hbwin.tar.gz
-tar xvf hbwin.tar.gz
+tar xf hbwin.tar.gz
 
 if [ ! -d hbwin ] ; then
    echo "c:/hbwin not found?!"
    exit -1
 fi
+echo =============================================
 
 echo == g drive for data ===
 cd /g
