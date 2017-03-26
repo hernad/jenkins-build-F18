@@ -1,14 +1,12 @@
 #!/bin/bash
 
-
 BRANCH=23100-ld
+FILE="F18_Windows_*.gz"
 
 export PATH=/c/msys32/mingw32/bin:C:\hbwin\bin:/mingw32/bin:/usr/local/bin:/usr/bin:/bin
 export PATH=$PATH:/c/ProgramData/Oracle/Java/javapath
 export PATH=$PATH:/c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0
 
-
-echo msys2 build step 3
 
 
 cd /c
@@ -33,9 +31,6 @@ git pull
 export HB_ARCHITECTURE=win
 export HB_COMPILER=mingw
 
-C_ROOT=C:
-
-
 export PATH=/c/hbwin/bin:$PATH
 
 harbour --version
@@ -43,8 +38,9 @@ hbmk2 --version
 
 source scripts/mingw_msys2_set_envars.sh
 
+rm $FILE
 scripts/build_gz_push.sh Windows
 
 
-cp F18_Windows*.gz //vboxsrv/vagrant/
+cp $FILE //vboxsrv/vagrant/
 
