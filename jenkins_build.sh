@@ -8,6 +8,7 @@ DOWNLOADS_DIR=/data_0/f18-downloads_0/downloads.bring.out.ba/www/files/
 
 [ -f hbwin.tar.gz ] && rm harbour.tar.gz
 
+vagrant halt
 vagrant --version
 vagrant up --provision
 vagrant halt
