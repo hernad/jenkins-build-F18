@@ -12,10 +12,9 @@ echo msys2 build step 3
 
 
 cd /c
-if [ ! -d hbwin ] ; then
-   curl -LO https://download.bring.out.ba/hbwin.tar.gz
-   tar xvf hbwin.tar.gz
-fi
+[ -d hbwin ] && rm -rf hbwin 
+curl -LO https://download.bring.out.ba/hbwin.tar.gz
+tar xvf hbwin.tar.gz
 
 if [ ! -d hbwin ] ; then
    echo "c:/hbwin not found?!"
@@ -37,8 +36,7 @@ export HB_COMPILER=mingw
 C_ROOT=C:
 
 
-HB_ROOT=$C_ROOT\\hbwin
-export PATH=$HB_ROOT\\bin:$PATH
+export PATH=/c/hbwin/bin:$PATH
 
 harbour --version
 hbmk2 --version
