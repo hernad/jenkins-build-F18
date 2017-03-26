@@ -43,6 +43,7 @@ source scripts/mingw_msys2_set_envars.sh
 rm $FILE
 scripts/build_gz_push.sh Windows
 
-
+git describe --tags > F18_VER
+cp F18_VER //vboxsrv/vagrant/
 cp $FILE //vboxsrv/vagrant/
 
