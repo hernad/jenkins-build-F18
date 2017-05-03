@@ -13,7 +13,7 @@ vagrant up --provision
 vagrant halt
 
 #F18_VER is generated in the build process
-FILE="F18_Ubuntu_amd64_`cat F18_VER`.gz"
+FILE="F18_Ubuntu_x86_64_`cat F18_VER`.gz"
 
 if ! ls $FILE>/dev/null ; then
    echo "$FILE not created ?!"
@@ -30,4 +30,3 @@ scp -i .ssh_download_key \
  $SSH_DOWNLOAD_SERVER:$DOWNLOADS_DIR
 
 ssh -i .ssh_download_key  $SSH_DOWNLOAD_SERVER  ls -lh $DOWNLOADS_DIR/$FILE
-
