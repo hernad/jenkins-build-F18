@@ -4,7 +4,6 @@ SSH_DOWNLOAD_SERVER=docker@192.168.168.171
 
 DOWNLOADS_DIR=/data_0/f18-downloads_0/downloads.bring.out.ba/www/files/
 
-FILE=F18_linux_i386.gz
 
 ./prepare_build.sh
 
@@ -17,7 +16,7 @@ vagrant halt
 
 
 #F18_VER is generated in the build process
-FILE="F18_Ubuntu_i686_`cat F18_VER`.gz"
+FILE="F18_Ubuntu_amd64_`cat F18_VER`.gz"
 
 if ! ls $FILE>/dev/null ; then
    echo "$FILE not created ?!"

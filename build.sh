@@ -35,10 +35,10 @@ sudo chown vagrant /data/build
 
 cd /data/build
 
-if [ ! -d /data/build/hb-linux-i386 ] ; then
+if [ ! -d /data/build/hb-linux ] ; then
   cd /data/build
-  curl -s -LO http://download.bring.out.ba/hb-linux-i386.tar.gz
-  tar xvfz hb-linux-i386.tar.gz
+  curl -s -LO http://download.bring.out.ba/hb-linux.tar.gz
+  tar xvfz hb-linux.tar.gz
 fi
  
 [ -d F18_knowhow ] || git clone https://github.com/knowhow/F18_knowhow.git
@@ -46,14 +46,14 @@ cd F18_knowhow
 git checkout 23100-ld -f
 git pull
 
-export PATH=/data/build/hb-linux-i386/bin:$PATH
+export PATH=/data/build/hb-linux/bin:$PATH
 
 echo ======== /data/build/F18_knowhow  =====================
 
 source scripts/ubuntu_set_envars.sh
-scripts/build_gz_push.sh Ubuntu_i686
+scripts/build_gz_push.sh Ubuntu_amd64
 
 
 git describe --tags > F18_VER
 cp F18_VER /vagrant/
-cp F18_Ubuntu_i686_`cat F18_VER`.gz /vagrant/
+cp F18_Ubuntu_amd54_`cat F18_VER`.gz /vagrant/
