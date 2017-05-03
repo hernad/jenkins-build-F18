@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu-i386"
+  config.vm.box = "ubuntu"
 
   config.persistent_storage.enabled = true
   config.persistent_storage.location = "./data.vdi"
