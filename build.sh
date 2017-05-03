@@ -52,3 +52,8 @@ echo ======== /data/build/F18_knowhow  =====================
 
 source scripts/ubuntu_set_envars.sh
 scripts/build_gz_push.sh Ubuntu_i686
+
+
+git describe --tags > F18_VER
+cp F18_VER /vagrant/
+cp F18_Ubuntu_i686_`cat F18_VER`.gz /vagrant/
