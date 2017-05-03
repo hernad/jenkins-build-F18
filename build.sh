@@ -1,7 +1,14 @@
 #!/bin/bash
 
 
+echo ======== mkpart ==============
+
+if [ -e /dev/sdb1 ] ; then
+   sudo parted /dev/sdb mklabel gpt mkpart P1 ext4 1MiB 100%
+fi
+
 echo ======== mount /data =====================
+
 [ -d /data ]  || mkdir -p /data
 
 if ( ! mount | grep -q \/data ) ; then
