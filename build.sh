@@ -35,7 +35,7 @@ sudo chown vagrant /data/build
 
 cd /data/build
 
-if [ ! -d /data/build/hb-linux ] ; then
+if [ ! -d /data/build/hb-linux ] || [ ! /data/build/hb-linux/bin/hbmk2 --version ] ; then
   cd /data/build
   curl -s -LO http://download.bring.out.ba/hb-linux.tar.gz
   tar xvfz hb-linux.tar.gz
