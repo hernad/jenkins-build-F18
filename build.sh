@@ -20,8 +20,12 @@ else
 fi
 
 echo ========= install dev deps ==========================
-sudo apt-get -y update
-sudo apt-get -y install libx11-dev build-essential flex bison libpq-dev
+
+if ! dpkg -l libx11-dev
+then
+  sudo apt-get -y update
+  sudo apt-get -y install libx11-dev build-essential flex bison libpq-dev
+fi
 
 
 echo ======== /data/build =====================
