@@ -47,4 +47,4 @@ export PATH=/data/build/hb-linux-i386/bin:$PATH
 echo ======== /data/build/F18_knowhow  =====================
 
 source scripts/ubuntu_set_envars.sh
-scripts/build_gz_push.sh
+scripts/build_gz_push.sh Ubuntu_i686
