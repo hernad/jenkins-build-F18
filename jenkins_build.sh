@@ -15,8 +15,6 @@ vagrant halt
 #F18_VER is generated in the build process
 FILE="F18_Ubuntu_amd64_`cat F18_VER`.gz"
 
-[ -f $FILE ] && rm $FILE
-
 if ! ls $FILE>/dev/null ; then
    echo "$FILE not created ?!"
    exit 1
