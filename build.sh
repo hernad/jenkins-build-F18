@@ -25,7 +25,7 @@ sudo apt-get -y install build-essential flex bison libpq-dev
 echo ======== /data/build =====================
 
 if [ ! -d /data/hb-linux-i386 ] ; then
-  curl -LO http://download.bring.out.ba/hb-linux-i386.tar.gz
+  curl -s -LO http://download.bring.out.ba/hb-linux-i386.tar.gz
   tar xvfz hb-linux-i386.tar.gz
 fi
  
