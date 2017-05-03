@@ -3,8 +3,10 @@
 
 echo ======== mkpart ==============
 
-if [ -e /dev/sdb1 ] ; then
+if [ ! -e /dev/sdb1 ] ; then
    sudo parted /dev/sdb mklabel gpt mkpart P1 ext4 1MiB 100%
+   sudo mkfs.ext4 /dev/sdb1
+
 fi
 
 echo ======== mount /data =====================
