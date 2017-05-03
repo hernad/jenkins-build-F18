@@ -26,22 +26,23 @@ sudo apt-get -y install build-essential flex bison libpq-dev
 
 echo ======== /data/build =====================
 
-if [ ! -d /data/hb-linux-i386 ] ; then
-  curl -s -LO http://download.bring.out.ba/hb-linux-i386.tar.gz
-  tar xvfz hb-linux-i386.tar.gz
-fi
- 
 [ -d /data/build ] || sudo mkdir -p /data/build
 sudo chown vagrant /data/build 
 
 cd /data/build
 
-git clone https://github.com/knowhow/F18_knowhow.git
+if [ ! -d /data/build/hb-linux-i386 ] ; then
+  cd /data/build
+  curl -s -LO http://download.bring.out.ba/hb-linux-i386.tar.gz
+  tar xvfz hb-linux-i386.tar.gz
+fi
+ 
+[ -d F18_knowhow ] || git clone https://github.com/knowhow/F18_knowhow.git
 cd F18_knowhow
 git checkout 23100-ld -f
 git pull
 
-export PATH=/data/hb-linux-i386/bin:$PATH
+export PATH=/data/build/hb-linux-i386/bin:$PATH
 
 echo ======== /data/build/F18_knowhow  =====================
 
