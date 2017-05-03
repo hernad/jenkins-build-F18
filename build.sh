@@ -56,4 +56,4 @@ scripts/build_gz_push.sh Ubuntu_amd64
 
 git describe --tags > F18_VER
 cp F18_VER /vagrant/
-cp F18_Ubuntu_amd54_`cat F18_VER`.gz /vagrant/
+cp F18_Ubuntu_amd64_`cat F18_VER`.gz /vagrant/
