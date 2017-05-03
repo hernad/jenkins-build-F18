@@ -7,17 +7,15 @@ DOWNLOADS_DIR=/data_0/f18-downloads_0/downloads.bring.out.ba/www/files/
 
 ./prepare_build.sh
 
-#F18_VER is generated in the build process
-FILE="F18_Ubuntu_amd64_`cat F18_VER`.gz"
-
-
-[ -f $FILE ] && rm $FILE
-
 
 vagrant --version
 vagrant up --provision
 vagrant halt
 
+#F18_VER is generated in the build process
+FILE="F18_Ubuntu_amd64_`cat F18_VER`.gz"
+
+[ -f $FILE ] && rm $FILE
 
 if ! ls $FILE>/dev/null ; then
    echo "$FILE not created ?!"
