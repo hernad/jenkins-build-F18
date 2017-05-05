@@ -35,7 +35,7 @@ sudo chown vagrant /data/build
 
 cd /data/build
 
-if [ ! -d /data/build/hb-linux-i386 ] ; then
+if [ ! -d /data/build/hb-linux-i386 ] ||  ( ! /data/build/hb-linux-i386/bin/hbmk2 --version ) ; then
   cd /data/build
   curl -s -LO http://download.bring.out.ba/hb-linux-i386.tar.gz
   tar xvfz hb-linux-i386.tar.gz
