@@ -6,6 +6,13 @@ DOWNLOADS_DIR=/data_0/f18-downloads_0/downloads.bring.out.ba/www/files/
 
 ./prepare_build.sh
 
+
+RUNNINGVM=`VBoxManage list runningvms | grep F18-linux-i386 | awk '{ print $2 }'`
+if [ ! -z "$RUNNINGVM" ] ; then
+  VBoxManage controlvm $RUNNINGVM poweroff
+  VBoxManage unregistervm $RUNNINGVM --delete
+fi
+
 vagrant --version
 vagrant up --provision
 vagrant halt
