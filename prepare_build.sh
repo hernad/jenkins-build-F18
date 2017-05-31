@@ -1,6 +1,9 @@
 #!/bin/bash
 
+PATH=/opt/VirtualBox:$PATH
+
 VDI_BASE=~/data_F18_core_linux.vdi 
+WORSPACE=F18-linux-i386
 
 if [ ! -f data.vdi ] ; then
 
@@ -13,7 +16,9 @@ if [ ! -f data.vdi ] ; then
   fi
 
 
-  HDD=`VBoxManage list hdds -l | grep "Location.*workspace/F18-linux-i386/data.vdi"  -B5 | grep "^UUID:" | awk '{print $2}'`
+  VBoxManage list hdds -l
+
+  HDD=`VBoxManage list hdds -l | grep "Location.*workspace/F18-${WORKSPACE}/data.vdi" -B5 | grep "^UUID:" | awk '{print $2}'`
   if [ -n "$HDD" ] ; then
      echo "erasing old HDD"
      VBoxManage closemedium $HDD --delete
