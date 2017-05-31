@@ -2,7 +2,7 @@
 
 VDI_BASE=~/data_F18_core_linux.vdi 
 
-if [ ! -f data.vdi ] 
+if [ ! -f data.vdi ] ; then 
 
   VM=`VBoxManage list vms | grep ^\"F18-linux_default_ | tail -1 | awk '{print $2}'`
   if [ -n "$VM" ] ; then
