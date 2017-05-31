@@ -52,6 +52,7 @@ export PATH=/data/build/hb-linux/bin:$PATH
 echo ======== /data/build/F18_knowhow  =====================
 
 source scripts/ubuntu_set_envars.sh
+export F18_POS=1
 scripts/build_gz_push.sh Ubuntu_x86_64
 
 
