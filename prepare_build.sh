@@ -3,7 +3,7 @@
 PATH=/opt/VirtualBox:$PATH
 
 VDI_BASE=~/data_F18_core_linux.vdi 
-WORSPACE=F18-linux-i386
+WORKSPACE=F18-linux-i386
 
 if [ ! -f data.vdi ] ; then
 
