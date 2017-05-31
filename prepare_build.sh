@@ -8,12 +8,17 @@ if [ ! -f data.vdi ] ; then
   if [ -n "$VM" ] ; then
     echo "erasing old VM $VM"
     VBoxManage unregistervm $VM --delete
+  else
+    echo "no old VM F18-linux-i386"
   fi
+
 
   HDD=`VBoxManage list hdds -l | grep "Location.*workspace/F18-linux-i386/data.vdi"  -B5 | grep "^UUID:" | awk '{print $2}'`
   if [ -n "$HDD" ] ; then
      echo "erasing old HDD"
      VBoxManage closemedium $HDD --delete
+  else
+     echo "no old HDD F18-linux-i386/data.vdi"
   fi
 
 fi
