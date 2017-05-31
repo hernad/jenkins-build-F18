@@ -7,7 +7,7 @@ WORKSPACE=F18-linux-i386
 
 if [ ! -f data.vdi ] ; then
 
-  VM=`VBoxManage list vms | grep ^\"F18-linux-i386_default_ | tail -1 | awk '{print $2}'`
+  VM=`VBoxManage list vms | grep ^\"${WORKSPACE}_default_ | tail -1 | awk '{print $2}'`
   if [ -n "$VM" ] ; then
     echo "erasing old VM $VM"
     VBoxManage unregistervm $VM --delete
@@ -15,15 +15,12 @@ if [ ! -f data.vdi ] ; then
     echo "no old VM F18-linux-i386"
   fi
 
-
-  VBoxManage list hdds -l | grep "Location.*workspace/F18-${WORKSPACE}/data.vdi" -B7
-  
-  HDD=`VBoxManage list hdds -l | grep "Location.*workspace/F18-${WORKSPACE}/data.vdi" -B7 | grep "^UUID:" | awk '{print $2}'`
+  HDD=`VBoxManage list hdds -l | grep "Location.*workspace/${WORKSPACE}/data.vdi" -B7 | grep "^UUID:" | awk '{print $2}'`
   if [ -n "$HDD" ] ; then
      echo "erasing old HDD"
      VBoxManage closemedium $HDD --delete
   else
-     echo "no old HDD F18-linux-i386/data.vdi"
+     echo "no old HDD ${WORKSPACE}/data.vdi"
   fi
 
 fi
