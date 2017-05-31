@@ -1,6 +1,28 @@
 #!/bin/bash
 
 SSH_DOWNLOAD_SERVER=docker@192.168.168.171
+WORKSPACE=F18-windows
+
+if [ ! -f data.vmdk ] ; then
+
+  VM=`VBoxManage list vms | grep ^\"${WORKSPACE}_default_ | tail -1 | awk '{print $2}'`
+  if [ -n "$VM" ] ; then
+    echo "erasing old VM $VM"
+    VBoxManage unregistervm $VM --delete
+  else
+    echo "no old VM F18-linux-i386"
+  fi
+
+  HDD=`VBoxManage list hdds -l | grep "Location.*workspace/${WORKSPACE}/data.vmdk" -B7 | grep "^UUID:" | awk '{print $2}'`
+  if [ -n "$HDD" ] ; then
+     echo "erasing old HDD"
+     VBoxManage closemedium $HDD --delete
+  else
+     echo "no old HDD ${WORKSPACE}/data.vmdk"
+  fi
+
+fi
+
 
 DOWNLOADS_DIR=/data_0/f18-downloads_0/downloads.bring.out.ba/www/files/
 
