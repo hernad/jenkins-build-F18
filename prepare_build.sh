@@ -2,10 +2,19 @@
 
 VDI_BASE=~/data_F18_core_linux.vdi 
 
-VM=`VBoxManage list vms | grep ^\"F18-linux_default_ | tail -1 | awk '{print $2}'`
-if [ ! -f data.vdi ] && [ -n "$VM" ] ; then
-  echo erase old VM $VM
-  VBoxManage unregistervm $VM --delete
+if [ ! -f data.vdi ] 
+
+  VM=`VBoxManage list vms | grep ^\"F18-linux_default_ | tail -1 | awk '{print $2}'`
+  if [ -n "$VM" ] ; then
+    echo "erase old VM $VM"
+    VBoxManage unregistervm $VM --delete
+  fi
+
+  HDD=`VBoxManage list hdds -l | grep "Location.*workspace/F18-linux/data.vdi"  -B5 | grep "^UUID:" | awk '{print $2}'`
+  if [ -n "$HDD" ] ; then
+     VBoxManage closemedium $HDD --delete
+  fi
+
 fi
 
 
