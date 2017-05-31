@@ -39,6 +39,7 @@ harbour --version
 hbmk2 --version
 
 source scripts/mingw_msys2_set_envars.sh
+export F18_POS=1
 
 rm $FILE
 scripts/build_gz_push.sh Windows
