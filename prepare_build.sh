@@ -18,7 +18,7 @@ if [ ! -f data.vdi ] ; then
 
   VBoxManage list hdds -l
 
-  HDD=`VBoxManage list hdds -l | grep "Location.*workspace/F18-${WORKSPACE}/data.vdi" -B5 | grep "^UUID:" | awk '{print $2}'`
+  HDD=`VBoxManage list hdds -l | grep "Location.*workspace/F18-${WORKSPACE}/data.vdi" -B7 | grep "^UUID:" | awk '{print $2}'`
   if [ -n "$HDD" ] ; then
      echo "erasing old HDD"
      VBoxManage closemedium $HDD --delete
