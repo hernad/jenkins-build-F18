@@ -8,6 +8,7 @@ export PATH=$PATH:/c/ProgramData/Oracle/Java/javapath
 export PATH=$PATH:/c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0
 
 
+pacman --noconfirm -Sy mingw-w64-i686-icu mingw-w64-i686-curl
 
 cd /c
 echo ======= harbour dependency ===================
