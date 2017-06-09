@@ -8,7 +8,7 @@ export PATH=$PATH:/c/ProgramData/Oracle/Java/javapath
 export PATH=$PATH:/c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0
 
 
-pacman --noconfirm -Sy mingw-w64-i686-icu mingw-w64-i686-curl
+#pacman --noconfirm -Sy mingw-w64-i686-icu mingw-w64-i686-curl
 
 cd /c
 echo ======= harbour dependency ===================
@@ -41,6 +41,7 @@ hbmk2 --version
 
 source scripts/mingw_msys2_set_envars.sh
 export F18_POS=1
+export F18_RNAL=1
 
 rm $FILE
 scripts/build_gz_push.sh Windows
