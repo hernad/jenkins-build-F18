@@ -29,7 +29,7 @@ cd F18_knowhow
 
 git checkout $BRANCH -f
 git pull
-
+git fetch --tags --force
 
 export HB_ARCHITECTURE=win
 export HB_COMPILER=mingw
