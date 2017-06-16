@@ -1,5 +1,6 @@
 #!/bin/bash
 
+BRANCH=23100-ld
 
 echo ======== mkpart ==============
 
@@ -43,8 +44,9 @@ fi
  
 [ -d F18_knowhow ] || git clone https://github.com/knowhow/F18_knowhow.git
 cd F18_knowhow
-git checkout 23100-ld -f
+git checkout $BRANCH -f
 git pull
+git fetch --tags --force
 
 export PATH=/data/build/hb-linux-i386/bin:$PATH
 
