@@ -6,4 +6,4 @@ fi
 
 cp Vagrantfile.gui Vagrantfile
 vagrant up
-
+vagrant provision
