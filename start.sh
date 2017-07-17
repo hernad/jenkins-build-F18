@@ -3,7 +3,7 @@
 
 F18_FONT=xfonts-terminus-oblique
 
-if ! dpkg -l $F18_FONT
+if ! dpkg -l $F18_FONT ; then
    apt-get install -y $F18_FONT
 fi
  
