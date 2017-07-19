@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BRANCH=23100-ld
+BRANCH=`cat /vagrant/F18_BUILD`
 
 echo ======== mkpart ==============
 
