@@ -2,6 +2,12 @@
 
 BRANCH=`cat /vagrant/F18_BUILD`
 
+if [ -z "$BRANCH" ] ; then
+  exit 1
+fi
+
+echo "branch=$BRANCH"
+
 echo ======== mkpart ==============
 
 if [ ! -e /dev/sdb1 ] ; then
@@ -58,6 +64,6 @@ export F18_RNAL=1
 scripts/build_gz_push.sh Ubuntu_i686
 
 
-git describe --tags > F18_VER
+echo VERSION > F18_VER
 cp F18_VER /vagrant/
 cp F18_Ubuntu_i686_`cat F18_VER`.gz /vagrant/
