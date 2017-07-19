@@ -22,6 +22,7 @@ if [ ! -z "$RUNNINGVM" ] ; then
   VBoxManage unregistervm $RUNNINGVM --delete
 fi
 
+cp Vagrantfile.jenkins Vagrantfile
 vagrant --version
 vagrant up --provision
 vagrant halt
