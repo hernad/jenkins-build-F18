@@ -3,6 +3,15 @@
 SSH_DOWNLOAD_SERVER=docker@192.168.168.171
 WORKSPACE=F18-windows
 
+if [ -n $2 ] ; then
+   F18_VER_MAJOR=$1
+   F18_VARIJANTA=$2
+
+   echo ${F18_VER_MAJOR}-${F18_VARIJANTA} > F18_BRANCH
+else
+   echo 23100-ld > F18_BRANCH
+fi
+
 if [ ! -f data.vmdk ] ; then
 
   VM=`VBoxManage list vms | grep ^\"${WORKSPACE}_default_ | tail -1 | awk '{print $2}'`
@@ -10,7 +19,7 @@ if [ ! -f data.vmdk ] ; then
     echo "erasing old VM $VM"
     VBoxManage unregistervm $VM --delete
   else
-    echo "no old VM F18-linux-i386"
+    echo "no old VM F18-windows"
   fi
 
   HDD=`VBoxManage list hdds -l | grep "Location.*workspace/${WORKSPACE}/data.vmdk" -B7 | grep "^UUID:" | awk '{print $2}'`

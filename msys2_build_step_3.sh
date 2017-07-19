@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BRANCH=23100-ld
+BRANCH=`cat //vboxsrv/vagrant/F18_BRANCH`
 FILE="F18_Windows_*.gz"
 
 export PATH=/c/msys32/mingw32/bin:C:\hbwin\bin:/mingw32/bin:/usr/local/bin:/usr/bin:/bin
