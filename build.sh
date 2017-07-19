@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BRANCH=`cat /vagrant/F18_BUILD`
+BRANCH=`cat /vagrant/F18_BRANCH`
 
 if [ -z "$BRANCH" ] ; then
   exit 1
