@@ -40,6 +40,8 @@ for f in F18_VER F18_VER_E F18_VER_X ; do
    VER=`cat $f`
    FILE="F18_Ubuntu_i686_${VER}.gz"
 
+   echo "scp $VER - file: $FILE -> download server"
+
    if ! ls $FILE>/dev/null ; then
        echo "$FILE not created ?!"
        exit 1
@@ -53,3 +55,5 @@ for f in F18_VER F18_VER_E F18_VER_X ; do
    ssh -i .ssh_download_key  $SSH_DOWNLOAD_SERVER  ls -lh $DOWNLOADS_DIR/$FILE
 
 done
+
+exit 0
