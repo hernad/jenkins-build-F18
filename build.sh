@@ -64,7 +64,7 @@ export F18_RNAL=1
 scripts/build_gz_push.sh Ubuntu_i686
 
 F18_VER=`cat VERSION`
-if [ -f VERSION ] && [ ! -f /vagrant/F18_Ubuntu_i686_${F18_VER}.gz ] ; then
+if [ -n "$F18_VER" ] && [ -f VERSION ] && [ ! -f /vagrant/F18_Ubuntu_i686_${F18_VER}.gz ] ; then
    git checkout -f $F18_VER
    scripts/build_gz_push.sh Ubuntu_i686 ${F18_VER}
    cp VERSION F18_VER
@@ -75,7 +75,7 @@ else
 fi
 
 F18_VER_E=`cat VERSION_E`
-if [ -f VERSION_E ] &&  [ ! -f /vagrant/F18_Ubuntu_i686_${F18_VER_E}.gz ] ; then
+if [ -n "$F18_VER_E" ] && [ -f VERSION_E ] &&  [ ! -f /vagrant/F18_Ubuntu_i686_${F18_VER_E}.gz ] ; then
    git checkout -f $F18_VER_E
    scripts/build_gz_push.sh Ubuntu_i686 ${F18_VER_E}
    cp VERSION_E F18_VER_E
@@ -86,7 +86,7 @@ else
 fi
 
 F18_VER_X=`cat VERSION_X`
-if [ -f VERSION_X ] &&  [ ! -f /vagrant/F18_Ubuntu_i686_${F18_VER_X}.gz ] ; then
+if [ -n "$F18_VER_X" ] &&  [ -f VERSION_X ] &&  [ ! -f /vagrant/F18_Ubuntu_i686_${F18_VER_X}.gz ] ; then
    git checkout -f $F18_VER_X
    scripts/build_gz_push.sh Ubuntu_i686 ${F18_VER_X}
    cp VERSION_X F18_VER_X
