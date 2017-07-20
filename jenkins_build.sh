@@ -30,7 +30,7 @@ vagrant halt
 [ -f .ssh_download_key ] || exit 1
 echo "scp $SSH_DOWNLOAD_SERVER $DOWNLOADS_DIR" 
 
-for $f in F18_VER F18_VER_E F18_VER_X ; do
+for f in F18_VER F18_VER_E F18_VER_X ; do
 
    if [ ! -f $f ] ; then
      echo "no version file $f continue ..."
