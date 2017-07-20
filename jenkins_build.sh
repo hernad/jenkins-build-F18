@@ -51,7 +51,7 @@ vagrant up --provision
 vagrant halt
 
 [ -f .ssh_download_key ] || exit 1
-echo "scp $SSH_DOWNLOAD_SERVER $DOWNLOADS_DIR" 
+echo "parametri download servera: $SSH_DOWNLOAD_SERVER $DOWNLOADS_DIR" 
 
 for f in F18_VER F18_VER_E F18_VER_X ; do
 
