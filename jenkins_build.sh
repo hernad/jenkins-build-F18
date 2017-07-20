@@ -44,17 +44,18 @@ vagrant --version
 vagrant up --provision
 vagrant halt
 
-#F18_VER is generated in the build process
-FILE="F18_Windows_`cat F18_VER`.gz"
+echo "remote download server parameters: $SSH_DOWNLOAD_SERVER $DOWNLOADS_DIR" 
 
+for f in F18_VER F18_VER_E F18_VER_X
+do
+
+FILE="F18_Windows_`cat $f`.gz"
 if ! ls $FILE>/dev/null ; then
    echo "$FILE not created ?!"
    exit 1
 fi
 
 [ -f .ssh_download_key ] || exit 1
-
-echo "scp $SSH_DOWNLOAD_SERVER $DOWNLOADS_DIR" 
 
 scp -i .ssh_download_key \
   -o StrictHostKeyChecking=no \
@@ -63,3 +64,4 @@ scp -i .ssh_download_key \
 
 ssh -i .ssh_download_key  $SSH_DOWNLOAD_SERVER  ls -lh $DOWNLOADS_DIR/$FILE
 
+done

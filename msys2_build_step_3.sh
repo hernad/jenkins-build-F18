@@ -44,9 +44,29 @@ export F18_POS=1
 export F18_RNAL=1
 
 rm $FILE
-scripts/build_gz_push.sh Windows
 
-git describe --tags > F18_VER
-cp F18_VER //vboxsrv/vagrant/
-cp $FILE //vboxsrv/vagrant/
+
+
+
+for f in VERSION VERSION_E VERSION_X
+do
+
+F18_VER=`cat $f`
+
+[ $f == "VERSION ] && cp $f //vboxsrv/vagrant/F18_VER
+[ $f == "VERSION_E ] && cp $f //vboxsrv/vagrant/F18_VER_E
+[ $f == "VERSION_X ] && cp $f //vboxsrv/vagrant/F18_VER_X
+
+FILE_GZ=F18_Windows_${F18_VER}.gz
+
+if [ -n "$F18_VER" ] && [ -f $f ] && [ ! -f //vboxrv/vagrant/$FILE_GZ ] ; then
+   git checkout -f $F18_VER
+   [ $? -ne 0 ] && echo "git checkout $F18_VER ERROR" && exit 1
+   scripts/build_gz_push.sh Windows $F18_VER
+   cp $FILE_GZ //vboxsrv/vagrant/
+else
+   echo "F18_VER ${F18_VER} already exists"
+fi
+
+done
 
