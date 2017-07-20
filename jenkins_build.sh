@@ -51,4 +51,5 @@ for $f in F18_VER F18_VER_E F18_VER_X ; do
       $SSH_DOWNLOAD_SERVER:$DOWNLOADS_DIR
 
    ssh -i .ssh_download_key  $SSH_DOWNLOAD_SERVER  ls -lh $DOWNLOADS_DIR/$FILE
-enddo
+
+done
