@@ -31,6 +31,12 @@ vagrant halt
 echo "scp $SSH_DOWNLOAD_SERVER $DOWNLOADS_DIR" 
 
 for $f in F18_VER F18_VER_E F18_VER_X ; do
+
+   if [ ! -f $f ] ; then
+     echo "no version file $f continue ..."
+     continue
+   fi
+
    VER=`cat $f`
    FILE="F18_Ubuntu_i686_${VER}.gz"
 
