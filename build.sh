@@ -72,6 +72,7 @@ else
    echo "F18_VER ${F18_VER} already exists"
 fi
 
+git checkout $BRANCH -f
 F18_VER_E=`cat VERSION_E`
 if [ -n "$F18_VER_E" ] && [ -f VERSION_E ] &&  [ ! -f /vagrant/F18_Ubuntu_i686_${F18_VER_E}.gz ] ; then
    git checkout -f $F18_VER_E
@@ -82,6 +83,7 @@ else
    echo "F18_VER_E ${F18_VER_E} already exists"
 fi
 
+git checkout $BRANCH -f
 F18_VER_X=`cat VERSION_X`
 if [ -n "$F18_VER_X" ] &&  [ -f VERSION_X ] &&  [ ! -f /vagrant/F18_Ubuntu_i686_${F18_VER_X}.gz ] ; then
    git checkout -f $F18_VER_X
