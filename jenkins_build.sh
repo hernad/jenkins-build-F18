@@ -1,5 +1,7 @@
 #!/bin/bash
 
+JENKINS_PROJ=F18_linux_i386_std
+ 
 if [ -n $2 ] ; then
    F18_VER_MAJOR=$1
    F18_VARIJANTA=$2
@@ -16,7 +18,7 @@ DOWNLOADS_DIR=/data_0/f18-downloads_0/downloads.bring.out.ba/www/files/
 ./prepare_build.sh
 
 
-RUNNINGVM=`VBoxManage list runningvms | grep F18-linux-i386 | awk '{ print $2 }'`
+RUNNINGVM=`VBoxManage list runningvms | grep $JENKINS_PROJ | awk '{ print $2 }'`
 if [ ! -z "$RUNNINGVM" ] ; then
   VBoxManage controlvm $RUNNINGVM poweroff
   VBoxManage unregistervm $RUNNINGVM --delete
