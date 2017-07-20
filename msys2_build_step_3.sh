@@ -51,6 +51,7 @@ rm $FILE
 for f in VERSION VERSION_E VERSION_X
 do
 
+git checkout $BRANCH -f
 F18_VER=`cat $f`
 
 [ $f == "VERSION ] && cp $f //vboxsrv/vagrant/F18_VER
