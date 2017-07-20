@@ -54,11 +54,11 @@ do
 git checkout $BRANCH -f
 F18_VER=`cat $f`
 
-[ $f == "VERSION ] && cp $f //vboxsrv/vagrant/F18_VER
-[ $f == "VERSION_E ] && cp $f //vboxsrv/vagrant/F18_VER_E
-[ $f == "VERSION_X ] && cp $f //vboxsrv/vagrant/F18_VER_X
+[ $f == "VERSION" ] && cp $f //vboxsrv/vagrant/F18_VER
+[ $f == "VERSION_E" ] && cp $f //vboxsrv/vagrant/F18_VER_E
+[ $f == "VERSION_X" ] && cp $f //vboxsrv/vagrant/F18_VER_X
 
-FILE_GZ=F18_Windows_${F18_VER}.gz
+FILE_GZ="F18_Windows_${F18_VER}.gz"
 
 if [ -n "$F18_VER" ] && [ -f $f ] && [ ! -f //vboxrv/vagrant/$FILE_GZ ] ; then
    git checkout -f $F18_VER
