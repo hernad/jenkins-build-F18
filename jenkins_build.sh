@@ -27,22 +27,22 @@ vagrant --version
 vagrant up --provision
 vagrant halt
 
-#F18_VER is generated in the build process
-FILE="F18_Ubuntu_i686_`cat F18_VER`.gz"
-
-if ! ls $FILE>/dev/null ; then
-   echo "$FILE not created ?!"
-   exit 1
-fi
-
 [ -f .ssh_download_key ] || exit 1
-
 echo "scp $SSH_DOWNLOAD_SERVER $DOWNLOADS_DIR" 
 
-scp -i .ssh_download_key \
-  -o StrictHostKeyChecking=no \
- $FILE \
- $SSH_DOWNLOAD_SERVER:$DOWNLOADS_DIR
+for $f in F18_VER F18_VER_E F18_VER_X ; do
+   VER=`cat $f`
+   FILE="F18_Ubuntu_i686_${VER}.gz"
 
-ssh -i .ssh_download_key  $SSH_DOWNLOAD_SERVER  ls -lh $DOWNLOADS_DIR/$FILE
+   if ! ls $FILE>/dev/null ; then
+       echo "$FILE not created ?!"
+       exit 1
+   fi
 
+   scp -i .ssh_download_key \
+      -o StrictHostKeyChecking=no \
+      $FILE \
+      $SSH_DOWNLOAD_SERVER:$DOWNLOADS_DIR
+
+   ssh -i .ssh_download_key  $SSH_DOWNLOAD_SERVER  ls -lh $DOWNLOADS_DIR/$FILE
+enddo
