@@ -7,7 +7,7 @@ if [ -n $2 ] ; then
    F18_VARIJANTA=$2
 
    echo ${F18_VER_MAJOR}-${F18_VARIJANTA} > F18_BRANCH
-   WORKSPACE=F18_windows_${F18_MAJOR}_{F18_VARIJANTA}
+   WORKSPACE=F18_windows_${F18_MAJOR}_${F18_VARIJANTA}
 else
    echo poziv "$0 <major> <varijanta>"
    echo poziv "$0 3 std"
