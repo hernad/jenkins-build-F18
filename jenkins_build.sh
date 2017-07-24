@@ -1,15 +1,17 @@
 #!/bin/bash
 
 SSH_DOWNLOAD_SERVER=docker@192.168.168.171
-WORKSPACE=F18-windows
 
 if [ -n $2 ] ; then
    F18_VER_MAJOR=$1
    F18_VARIJANTA=$2
 
    echo ${F18_VER_MAJOR}-${F18_VARIJANTA} > F18_BRANCH
+   WORKSPACE=F18_windows_${F18_MAJOR}_{F18_VARIJANTA}
 else
-   echo 23100-ld > F18_BRANCH
+   echo poziv "$0 <major> <varijanta>"
+   echo poziv "$0 3 std"
+   exit 1
 fi
 
 if [ ! -f data.vmdk ] ; then
