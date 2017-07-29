@@ -23,7 +23,7 @@ echo =============================================
 
 echo == g drive for data ===
 cd /g
-git clone https://github.com/knowhow/F18_knowhow.git
+[ -d F18_knowhow ] || git clone https://github.com/knowhow/F18_knowhow.git
 cd F18_knowhow
 
 git checkout $BRANCH -f
