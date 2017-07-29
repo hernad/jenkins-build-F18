@@ -26,6 +26,15 @@ cd /g
 [ -d F18_knowhow ] || git clone https://github.com/knowhow/F18_knowhow.git
 cd F18_knowhow
 
+git log -n 1
+if [ $? -ne 0 ] ; then
+  echo "F18_knowhow nije validan repos ?!"
+  cd /g
+  rm -rf F18_knowhow
+  git clone https://github.com/knowhow/F18_knowhow.git
+fi
+ 
+
 git checkout $BRANCH -f
 git pull
 git fetch --tags --force
