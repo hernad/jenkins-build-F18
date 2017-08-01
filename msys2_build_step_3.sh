@@ -1,5 +1,6 @@
 #!/bin/bash
 
+REPOS=F18_knowhow
 BRANCH=`cat //vboxsrv/vagrant/F18_BRANCH`
 FILE="F18_Windows_*.gz"
 
@@ -28,11 +29,11 @@ cd F18_knowhow
 
 git log -n 1
 if [ $? -ne 0 ] ; then
-  echo "F18_knowhow nije validan repos ?!, brisem, ponovo git clone .."
+  echo "${REPOS} nije validan repos ?!, brisem, ponovo git clone .."
   cd /g
-  rm -rf F18_knowhow
-  git clone https://github.com/knowhow/F18_knowhow.git
-  cd F18_knowhoe
+  rm -rf ${REPOS}
+  git clone https://github.com/knowhow/${REPOS}.git
+  cd ${REPOS}
 fi
  
 
