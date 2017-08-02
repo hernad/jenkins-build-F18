@@ -37,7 +37,7 @@ if [ $? -ne 0 ] ; then
 fi
  
 #git checkout $BRANCH -f
-gi reset --hard origin/$BRANCH
+git reset --hard origin/$BRANCH
 git pull
 git fetch --tags --force
 
