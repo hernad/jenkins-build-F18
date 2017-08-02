@@ -71,6 +71,7 @@ FILE_GZ="F18_Windows_${F18_VER}.gz"
 
 if [ -n "$F18_VER" ] && [ -f $f ] && [ ! -f $VAGRANT_DIR/$FILE_GZ ] ; then
    echo build ">>>>>>>>>>>>>>> $f - $F18_VER <<<<<<<<<<<<<<<<<" 
+   git pull
    git checkout -f $F18_VER
    [ $? -ne 0 ] && echo "git checkout $F18_VER ERROR" && exit 1
    scripts/build_gz_push.sh Windows $F18_VER
