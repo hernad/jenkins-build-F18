@@ -36,10 +36,10 @@ if [ $? -ne 0 ] ; then
   cd ${REPOS}
 fi
  
-#git checkout $BRANCH -f
 git reset --hard origin/$BRANCH
-git pull
 git fetch --tags --force
+git checkout -f $BRANCH
+git pull
 
 export HB_ARCHITECTURE=win
 export HB_COMPILER=mingw
