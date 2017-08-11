@@ -51,8 +51,9 @@ fi
 [ -d F18_knowhow ] || git clone https://github.com/knowhow/F18_knowhow.git
 cd F18_knowhow
 git reset --hard origin/$BRANCH
-git pull
+#git pull
 git fetch --tags --force
+git checkout -f
 
 export PATH=/data/build/hb-linux-i386/bin:$PATH
 
