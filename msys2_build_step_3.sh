@@ -73,7 +73,8 @@ if [ -n "$F18_VER" ] && [ -f $f ] && [ ! -f $VAGRANT_DIR/$FILE_GZ ] ; then
    echo build ">>>>>>>>>>>>>>> $f - $F18_VER <<<<<<<<<<<<<<<<<" 
    git checkout -f $F18_VER
    [ $? -ne 0 ] && echo "git checkout $F18_VER ERROR" && exit 1
-   scripts/build_gz_push.sh Windows $F18_VER
+   ./build.sh --no-rm $F18_VER && scripts/build_gz.sh $F18_VER
+   [ $? -ne 0 ] && rm -rf .h && echo "build $F18_VER ERROR" && exit 1
    cp $FILE_GZ //vboxsrv/vagrant/
 else
    echo "F18_VER ${F18_VER} already exists"
