@@ -50,7 +50,7 @@ fi
  
 [ -d F18_knowhow ] || git clone https://github.com/knowhow/F18_knowhow.git
 cd F18_knowhow
-git checkout $BRANCH -f
+git reset --hard origin/$BRANCH
 git pull
 git fetch --tags --force
 
