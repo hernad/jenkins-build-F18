@@ -52,8 +52,8 @@ fi
 cd F18_knowhow
 git reset --hard origin/$BRANCH
 git fetch --tags --force
-git merge $BRANCH origin/$BRANCH
 git checkout -f
+git pull
 
 export PATH=/data/build/hb-linux-i386/bin:$PATH
 
