@@ -68,6 +68,7 @@ if [ -n "$F18_VER" ] && [ -f VERSION ] && [ ! -f /vagrant/F18_Ubuntu_i686_${F18_
    git checkout -f $F18_VER
    [ $? -ne 0 ] && echo "git checkout $F18_VER ERROR" && exit 1
    scripts/build_gz_push.sh Ubuntu_i686 ${F18_VER}
+   [ $? -ne 0 ] && rm -rf .h && echo "build ERROR ${F18_VER}" && exit 1 
    cp F18_Ubuntu_i686_${F18_VER}.gz /vagrant/
 else
    cp VERSION /vagrant/F18_VER
@@ -81,6 +82,7 @@ if [ -n "$F18_VER_E" ] && [ -f VERSION_E ] &&  [ ! -f /vagrant/F18_Ubuntu_i686_$
    git checkout -f $F18_VER_E
    [ $? -ne 0 ] && echo "git checkout $F18_VER_E ERROR" && exit 1
    scripts/build_gz_push.sh Ubuntu_i686 ${F18_VER_E}
+   [ $? -ne 0 ] && rm -rf .h && echo "build ERROR ${F18_VER_E}" && exit 1 
    cp F18_Ubuntu_i686_${F18_VER_E}.gz /vagrant/
 else
    echo "F18_VER_E ${F18_VER_E} already exists"
@@ -93,6 +95,7 @@ if [ -n "$F18_VER_X" ] &&  [ -f VERSION_X ] &&  [ ! -f /vagrant/F18_Ubuntu_i686_
    git checkout -f $F18_VER_X
    [ $? -ne 0 ] && echo "git checkout $F18_VER_X ERROR" && exit 1
    scripts/build_gz_push.sh Ubuntu_i686 ${F18_VER_X}
+   [ $? -ne 0 ] && rm -rf .h && echo "build ERROR ${F18_VER_X}" && exit 1 
    cp F18_Ubuntu_i686_${F18_VER_X}.gz /vagrant/
 else
    echo "F18_VER_X ${F18_VER_X} already exists"
