@@ -1,7 +1,6 @@
 #!/bin/bash
 
-SSH_DOWNLOAD_SERVER=docker@192.168.168.171
-
+SSH_DOWNLOAD_SERVER=docker@192.168.168.181
 if [ -n $2 ] ; then
    F18_VER_MAJOR=$1
    F18_VARIJANTA=$2
